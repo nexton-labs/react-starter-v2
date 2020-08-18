@@ -1,0 +1,77 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:10.10.0-stretch-browsers-legacy
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: yarn test --maxWorkers=2
+
+  deploy-dev:
+    docker:
+      - image: circleci/node:10.10.0-stretch-browsers-legacy
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: yarn install
+      - run:
+          name: Build bundle for development
+          command: yarn build:dev
+      - run:
+          name: Installing dependencies.
+          command: |
+            sudo apt-get -y -qq install awscli
+      - deploy:
+          name: Deploy to S3 if branch is development.
+          command: aws s3 sync ~/repo/dist s3://[SR3-URL]/ --metadata-directive REPLACE --cache-control max-age=0,no-cache,no-store,must-revalidate --acl public-read
+
+  deploy-prod:
+    docker:
+      - image: circleci/node:10.10.0-stretch-browsers-legacy
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: yarn install
+      - run:
+          name: Build bundle for production
+          command: yarn build:prod
+      - run:
+          name: Installing dependencies.
+          command: |
+            sudo apt-get -y -qq install awscli
+      - deploy:
+          name: Deploy to S3 if branch is production.
+          command: aws s3 sync ~/repo/dist s3://[SR3-URL]/ --metadata-directive REPLACE --cache-control max-age=0,no-cache,no-store,must-revalidate --acl public-read
+
+workflows:
+  version: 2
+
+  test-build-deploy:
+    jobs:
+      - build
+      - deploy-dev:
+          requires:
+            - build
+          filters:
+            branches:
+              only: dev
+      - deploy-prod:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

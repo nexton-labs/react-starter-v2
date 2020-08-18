@@ -1,0 +1,130 @@
+{
+  "options": {
+    "merge-default-rules": false,
+    "max-warnings": 50
+  },
+  "rules": {
+    "clean-import-paths": [
+      2,
+      {
+        "leading-underscore": true,
+        "filename-extension": false
+      }
+    ],
+    "class-name-format": [
+      2,
+      {
+        "convention": "hyphenatedbem"
+      }
+    ],
+    "empty-line-between-blocks": [
+      2,
+      {
+        "include": true,
+        "allow-single-line-rulesets": false
+      }
+    ],
+    "extends-before-mixins": 2,
+    "extends-before-declarations": 2,
+    "hex-notation": [
+      2,
+      {
+        "style": "uppercase"
+      }
+    ],
+    "indentation": [
+      2,
+      {
+        "size": 2
+      }
+    ],
+    "leading-zero": [
+      2,
+      {
+        "include": true
+      }
+    ],
+    "mixins-before-declarations": [
+      2,
+      {
+        "exclude": ["breakpoint", "mq"]
+      }
+    ],
+    "no-color-literals": [
+      2,
+      {
+        "allow-map-identifiers": true,
+        "allow-rgba": true,
+        "allow-variable-identifiers": true
+      }
+    ],
+    "no-css-comments": 1,
+    "no-debug": 1,
+    "no-empty-rulesets": 2,
+    "no-ids": 2,
+    "no-important": 2,
+    "no-invalid-hex": 2,
+    "no-mergeable-selectors": 2,
+    "no-misspelled-properties": 2,
+    "no-trailing-zero": 1,
+    "no-trailing-whitespace": 2,
+    "no-universal-selectors": 2,
+    "no-vendor-prefixes": 2,
+    "no-warn": 1,
+    "one-declaration-per-line": 1,
+    "placeholder-in-extend": 2,
+    "property-sort-order": [
+      1,
+      {
+        "order": "alphabetical"
+      }
+    ],
+    "pseudo-element": 1,
+    "quotes": [
+      1,
+      {
+        "style": "double"
+      }
+    ],
+    "shorthand-values": 1,
+    "single-line-per-selector": 1,
+    "space-after-colon": [
+      1,
+      {
+        "include": true
+      }
+    ],
+    "space-after-comma": [
+      1,
+      {
+        "include": true
+      }
+    ],
+    "space-around-operator": [
+      1,
+      {
+        "include": true
+      }
+    ],
+    "space-before-brace": [
+      1,
+      {
+        "include": true
+      }
+    ],
+    "trailing-semicolon": [
+      1,
+      {
+        "include": true
+      }
+    ],
+    "url-quotes": true,
+    "variable-for-property": [
+      0,
+      {
+        "properties": ["margin"],
+        "whitelist-values": ["auto", "0"]
+      }
+    ]
+  }
+}
