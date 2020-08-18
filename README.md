@@ -1,4 +1,4 @@
-# Crossing Minds
+# React Starter - V2 - DEFAULT
 
 ## Start application
 
