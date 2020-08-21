@@ -2,10 +2,11 @@
 
 ## Stack
 - React
+- Webpack
 - Redux
 - Rematch
 - Material UI
-- No Authentication provider implementated.
+- No Authentication provider implemented.
 
 ## Start application
 
