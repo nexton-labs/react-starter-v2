@@ -7,6 +7,7 @@
 - Webpack
 - Redux
 - Rematch
+- Styled Components
 - Material UI
 - No Authentication provider implemented.
 
