@@ -1,3 +1,5 @@
+![Test Image 1](https://www.nextonlabs.com/static/nexton-logo-0a15261bf8a063c1ad6d593775b9aecb.svg)
+
 # React Starter - V2 - DEFAULT (USE IT)
 
 ## Stack
